@@ -1,0 +1,956 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>会火财经</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="./skin/css/cjcss.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./skin/js/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="./skin/js/jquery.superslide.2.1.1.js"></script>
+    <meta http-equiv="mobile-agent" content="format=xhtml;url=/m/index.php">
+    <script type="text/javascript">
+        if (window.location.toString().indexOf('pref=padindex') != -1) {} else {
+            if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                if (window.location.href.indexOf("?mobile") < 0) {
+                    try {
+                        if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                            window.location.href = "/m/index.php";
+                        } else if (/iPad/i.test(navigator.userAgent)) {} else {}
+                    } catch (e) {}
+                }
+            }
+        }
+    </script>
+</head>
+<style>
+    .a-box {
+        position: fixed;
+        right: 10px;
+        bottom: 2%;
+        border: 1px solid #cccccc;
+        background: #7ec6bc;
+        background: -webkit-linear-gradient(to top, #ebe717, #7ec6bc);
+        background: linear-gradient(to top, #ebe717, #7ec6bc);
+        border-radius: 6px;
+    }
+    
+    .a-box>div {
+        position: relative;
+        padding: 10px;
+        padding-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .a-box i {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background-image: url('https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/gb-icon.png');
+        background-size: 100% 100%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    
+    .a-box span {
+        color: #010101;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    .a-box .qr-code {
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+    }
+    
+    .a-box .go-show-more {
+        color: #333;
+        font-weight: bold;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        border-top: 1px dashed #adadad;
+        width: 100%;
+        padding-top: 10px;
+    }
+    
+    .a-box .go-show-more img {
+        width: 14px;
+        height: 14px;
+        margin-left: 5px;
+    }
+    
+    .center-img-cover {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+    
+    .center-img-cover a {
+        display: block;
+        width: 350px;
+        height: auto;
+    }
+    
+    .center-img-cover img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .bottom-img-ad {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+    
+    .bottom-img-ad img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .left-img-ad {
+        position: absolute;
+        left: 20px;
+        top: 170px;
+        display: block;
+        width: 180px;
+        height: auto;
+        z-index: 10;
+    }
+    
+    .right-img-ad {
+        right: 20px;
+        position: absolute;
+        top: 170px;
+        display: block;
+        width: 180px;
+        height: auto;
+        z-index: 10;
+    }
+    
+    .left-img-ad img,
+    .right-img-ad img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .cover-ad-box {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        left: 0;
+        z-index: 2019;
+    }
+    
+    .cover-ad-box .cover-box {
+        width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .cover-ad-box a {
+        display: block;
+        width: 100%;
+        z-index: 2020;
+    }
+    
+    .cover-ad-box img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .cover-ad-box .cover-close-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 18px;
+        height: 18px;
+        z-index: 2021;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <!--<div class="toper">-->
+    <!--  <div class="w1200"> <a class="login"></a>&lt;!&ndash;<a href="#" class="swsy">网站地图</a>&ndash;&gt;</div>-->
+    <!--</div>-->
+    <div class="nheader">
+        <div class="w1200">
+            <div class="nlogo">
+                <a href="/"><img src="./skin/images/logo.png" alt="我的网站"></a>
+            </div>
+            <div class="search">
+                <form name="formsearch" action="/plus/search.php">
+                    <input type="hidden" name="kwtype" value="0" />
+                    <input type="text" name="q" class="search-keyword fl" value="请输入关键词" onfocus="if(this.value=='请输入关键词'){this.value='';}" />
+                    <button type="submit" class="search-submit fl"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="jjnav">
+        <div class="w1200">
+            <li><a href="/" class='current'>网站首页</a></li>
+
+            <li><a href="./a/chanye/">科创板</a></li>
+
+            <li><a href="./a/hongguan/">股市</a></li>
+
+            <li><a href="./a/touzilicai/">新三板</a></li>
+        </div>
+    </div>
+    <style>
+        #bdads1 {
+            width: 1026px;
+            margin: 0 auto;
+            margin: 5px 0 0 190px;
+        }
+    </style>
+
+    <!--<div id="bdads1">广告</div>-->
+    <div class='a-box'>
+        <div>
+            <i class='close-ad-btn'></i>
+            <span class='a-box-title'>Business-Email</span>
+            <span>tg0077@yeah.net</span>
+            <a href='javascript:;' class="go-show-more">商务合作<img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/more.png" alt=""></a>
+        </div>
+    </div>
+    <a href="https://hk.86177.top/" class="left-img-ad">
+        <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/left_right.png" alt="">
+    </a>
+    <a href="https://hk.86177.top/" class="right-img-ad">
+        <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/left_right.png" alt="">
+    </a>
+    <div class="cover-ad-box">
+        <div class='cover-box'>
+            <a href="https://hk.86177.top/">
+                <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/01.png" alt="">
+            </a>
+            <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/close-btn.png" alt="" class='cover-close-btn'>
+        </div>
+    </div>
+    <div class="main">
+        <div class="w1200" style=" overflow:visible">
+            <div class="gdbb">
+                <div class="title">滚动播报</div>
+                <div class="gdbbcon">
+                    <div class="bd">
+                        <ul>
+                            <li><a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行">苏宁荣获2016中国政府采购奖O2O模式备受行</a></li>
+                            <li><a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的">【见闻对话】路易达孚陈涛：商品大涨的</a></li>
+                            <li><a href="./a/chanye/251.html" title="11月乘用车销量再增近20% 销量连续9个月攀">11月乘用车销量再增近20% 销量连续9个月攀</a></li>
+                            <li><a href="./a/chanye/256.html" title="智能贝塔ETF成投资新宠 资金加速流入">智能贝塔ETF成投资新宠 资金加速流入</a></li>
+                            <li><a href="./a/chanye/259.html" title="刘士余：证监会放权 交易所加强一线监管">刘士余：证监会放权 交易所加强一线监管</a></li>
+                            <li><a href="./a/guona/66.html" title="苏州限购后首场土拍仍火爆 40多家房企参">苏州限购后首场土拍仍火爆 40多家房企参</a></li>
+                            <li><a href="./a/guona/89.html" title="2016中国吊装十强、百强企业榜单发布">2016中国吊装十强、百强企业榜单发布</a></li>
+                            <li><a href="./a/guona/69.html" title="一线城市房价确已降温 专家：控房价力度">一线城市房价确已降温 专家：控房价力度</a></li>
+                            <li><a href="./a/guona/78.html" title="金砖国家新开发银行首个贷款签约项目落">金砖国家新开发银行首个贷款签约项目落</a></li>
+                            <li><a href="./a/guona/85.html" title="汇丰调查：2030年中国服务出口规模预计将">汇丰调查：2030年中国服务出口规模预计将</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    jQuery(".gdbbcon").slide({
+                        mainCell: ".bd ul",
+                        autoPlay: true,
+                        effect: "leftMarquee",
+                        interTime: 50,
+                        vis: 5
+                    });
+                </script>
+            </div>
+            <div class="con mt10">
+                <div class="jjhdp mr85">
+                    <div class="focusBox">
+                        <ul class="pic">
+                            <li>
+                                <a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行"><img src="./uploads/191104/1-1911041131091O.png" alt="苏宁荣获2016中国政府采购奖O2O模式备受行" /></a>
+                            </li>
+                            <li>
+                                <a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的"><img src="./uploads/191104/1-1911041126122P.png" alt="【见闻对话】路易达孚陈涛：商品大涨的" /></a>
+                            </li>
+                            <li>
+                                <a href="./a/chanye/251.html" title="11月乘用车销量再增近20% 销量连续9个月攀"><img src="./uploads/191104/1-19110411254Y24.png" alt="11月乘用车销量再增近20% 销量连续9个月攀" /></a>
+                            </li>
+                            <li>
+                                <a href="./a/chanye/256.html" title="智能贝塔ETF成投资新宠 资金加速流入"><img src="./uploads/191104/1-191104112532296.png" alt="智能贝塔ETF成投资新宠 资金加速流入" /></a>
+                            </li>
+                            <li>
+                                <a href="./a/chanye/259.html" title="刘士余：证监会放权 交易所加强一线监管"><img src="./uploads/191104/1-191104112440a9.png" alt="刘士余：证监会放权 交易所加强一线监管" /></a>
+                            </li>
+
+                        </ul>
+                        <div class="txt-bg"></div>
+                        <div class="txt">
+                            <ul>
+                                <li><a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行">苏宁荣获2016中国政府采购奖O2O模式备受行</a></li>
+                                <li><a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的">【见闻对话】路易达孚陈涛：商品大涨的</a></li>
+                                <li><a href="./a/chanye/251.html" title="11月乘用车销量再增近20% 销量连续9个月攀">11月乘用车销量再增近20% 销量连续9个月攀</a></li>
+                                <li><a href="./a/chanye/256.html" title="智能贝塔ETF成投资新宠 资金加速流入">智能贝塔ETF成投资新宠 资金加速流入</a></li>
+                                <li><a href="./a/chanye/259.html" title="刘士余：证监会放权 交易所加强一线监管">刘士余：证监会放权 交易所加强一线监管</a></li>
+
+                            </ul>
+                        </div>
+                        <ul class="num">
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+
+                        </ul>
+                    </div>
+                    <script type="text/javascript">
+                        jQuery(".focusBox").slide({
+                            titCell: ".num li",
+                            mainCell: ".pic",
+                            effect: "fold",
+                            autoPlay: true,
+                            trigger: "click",
+                            //下面startFun代码用于控制文字上下切换
+                            startFun: function(i) {
+                                jQuery(".focusBox .txt li").eq(i).animate({
+                                    "bottom": 0
+                                }).siblings().animate({
+                                    "bottom": -36
+                                });
+                            }
+                        });
+                    </script>
+                    <div class="newslist">
+                        <ul>
+                            <li><a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行"><i></i>苏宁荣获2016中国政府采购奖O2O模式备受行</a></li>
+                            <li><a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的"><i></i>【见闻对话】路易达孚陈涛：商品大涨的</a></li>
+                            <li><a href="./a/chanye/251.html" title="11月乘用车销量再增近20% 销量连续9个月攀"><i></i>11月乘用车销量再增近20% 销量连续9个月攀</a></li>
+                            <li><a href="./a/chanye/256.html" title="智能贝塔ETF成投资新宠 资金加速流入"><i></i>智能贝塔ETF成投资新宠 资金加速流入</a></li>
+                            <li><a href="./a/chanye/259.html" title="刘士余：证监会放权 交易所加强一线监管"><i></i>刘士余：证监会放权 交易所加强一线监管</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="box jjtmid">
+                    <div class="newslist mt10">
+                        <ul>
+                            <li class='first'><a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行"><i></i>苏宁荣获2016中国政府采购奖O2O模式备受行</a></li>
+                            <li><a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的"><i></i>【见闻对话】路易达孚陈涛：商品大涨的</a></li>
+                            <li><a href="./a/chanye/251.html" title="11月乘用车销量再增近20% 销量连续9个月攀"><i></i>11月乘用车销量再增近20% 销量连续9个月攀</a></li>
+                            <li><a href="./a/chanye/256.html" title="智能贝塔ETF成投资新宠 资金加速流入"><i></i>智能贝塔ETF成投资新宠 资金加速流入</a></li>
+                            <li><a href="./a/chanye/259.html" title="刘士余：证监会放权 交易所加强一线监管"><i></i>刘士余：证监会放权 交易所加强一线监管</a></li>
+                            <li><a href="./a/guona/66.html" title="苏州限购后首场土拍仍火爆 40多家房企参"><i></i>苏州限购后首场土拍仍火爆 40多家房企参</a></li>
+                            <li><a href="./a/guona/89.html" title="2016中国吊装十强、百强企业榜单发布"><i></i>2016中国吊装十强、百强企业榜单发布</a></li>
+                            <li><a href="./a/guona/69.html" title="一线城市房价确已降温 专家：控房价力度"><i></i>一线城市房价确已降温 专家：控房价力度</a></li>
+                            <li><a href="./a/guona/78.html" title="金砖国家新开发银行首个贷款签约项目落"><i></i>金砖国家新开发银行首个贷款签约项目落</a></li>
+                            <li><a href="./a/guona/85.html" title="汇丰调查：2030年中国服务出口规模预计将"><i></i>汇丰调查：2030年中国服务出口规模预计将</a></li>
+                            <li><a href="./a/touzilicai/708.html" title="海航斥资6亿入股香港上市珠宝商"><i></i>海航斥资6亿入股香港上市珠宝商</a></li>
+                            <li><a href="./a/touzilicai/707.html" title="中国联通启用低频组建4G网 推2G和3G用户转"><i></i>中国联通启用低频组建4G网 推2G和3G用户转</a></li>
+                            <li><a href="./a/touzilicai/706.html" title="3D打印汽车将实现大规模量产？"><i></i>3D打印汽车将实现大规模量产？</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="jjtright">
+                    <div class="m-p1-lb2_1 slideTxtBox">
+                        <div class="m-tab_container">
+                            <div class="udv-clearfix m-tab hd"> <span class="w48"><span class="tab-bg"><a href="#">沪深</a></span></span> <span class="w48 on"><span class="tab-bg"><a href="#">亚太</a></span></span> <span class="w48"><span class="tab-bg"><a href="#">欧洲</a></span></span>
+                                <span class="w48"><span class="tab-bg"><a href="#">美国</a></span></span> <span class="w48"><span class="tab-bg"><a href="#">商品</a></span></span> <span class="w48"><span class="tab-bg"><a href="#">货币</a></span></span>
+                            </div>
+                        </div>
+                        <div class="bd" style="position: relative; width: 359px; height: 354px;">
+                            <div class="m-p1-lb2_1-container" style="position: absolute; width: 359px; left: 0px; top: 0px; display: none;">
+                                <div>
+                                    <dl>
+                                        <dt class="active">
+                    <ul class="rup">
+                      <li class="wmt_n"><a href="#" target="_blank">上证综指</a></li>
+                      <li><span class="">3063.81</span></li>
+                      <li><span class="rdown">+2.46</span></li>
+                      <li><span class="rdown">+0.08%</span></li>
+                    </ul>
+                  </dt>
+                                        <dd style="height:165px;">
+                                            <a target="_blank" href="#"><img src="./skin/images/nsh000001.gif"></a>
+                                        </dd>
+                                        <dd class="link" style="display:block">
+                                            <p> <a href="#" target="_blank" style="color:#333333; font-size:14px;">保值理财就上天天财经基金超市</a></p>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gdown">
+                      <li class="wmt_n"><a href="#" target="_blank">深证成指</a></li>
+                      <li><span class="">10759.68</span></li>
+                      <li><span class="gdown">-27.81</span></li>
+                      <li><span class="gdown">-0.26%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="rup">
+                      <li class="wmt_n"><a href="#" target="_blank">沪深300</a></li>
+                      <li><span class="">3305.85</span></li>
+                      <li><span class="rdown">+3.20</span></li>
+                      <li><span class="rdown">+0.10%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gdown">
+                      <li class="wmt_n"><a href="#" target="_blank">大数据100</a></li>
+                      <li><span class="">6687.82</span></li>
+                      <li><span class="gdown">-23.10</span></li>
+                      <li><span class="gdown">-0.34%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gdown">
+                      <li class="wmt_n"><a href="#" target="_blank">创业板指</a></li>
+                      <li><span class="">2194.23</span></li>
+                      <li><span class="gdown">-14.34</span></li>
+                      <li><span class="gdown">-0.65%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="m-p1-lb2_1-container" style="position: absolute; width: 359px; left: 0px; top: 0px; display: block;">
+                                <div>
+                                    <dl>
+                                        <dt class="active">
+                    <ul class="gup">
+                      <li class="wmt_n"><a href="#" target="_blank">恒生指数</a></li>
+                      <li><span class="">23233.311</span></li>
+                      <li><span class="rdown">+202.010</span></li>
+                      <li><span class="rdown">+0.880%</span></li>
+                    </ul>
+                  </dt>
+                                        <dd style="height:165px;">
+                                            <a target="_blank" href="#"><img src="./skin/images/hsi.gif"></a>
+                                        </dd>
+                                        <dd class="link" style="display:block">
+                                            <p> <a href="#" target="_blank">涨跌幅</a> <a href="#" target="_blank">成交量</a> <a href="#" target="_blank">沪港通</a>
+                                                <a href="#" target="_blank">
+                                                    <font color="red">十档level2行情</font>
+                                                </a> <a href="#" target="_blank">A+H比价</a> </p>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">日经指数</li>
+                      <li><span class="">16856.37</span></li>
+                      <li><span class="rdown">+82.13</span></li>
+                      <li><span class="rdown">+0.49%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="rdown">
+                      <li class="wmt_n">中国台湾加权指数</li>
+                      <li><span class="">9165.17</span></li>
+                      <li><span class="gdown">-54.00</span></li>
+                      <li><span class="gdown">-0.59%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">澳交所普通股</li>
+                      <li><span class="">5518.47</span></li>
+                      <li><span class="rdown">+0.21</span></li>
+                      <li><span class="@PBG@">0.00%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">富时新加坡海峡指数</li>
+                      <li><span class="">2815.24</span></li>
+                      <li><span class="rdown">+9.76</span></li>
+                      <li><span class="rdown">+0.35%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="m-p1-lb2_1-container" style="position: absolute; width: 359px; left: 0px; top: 0px; display: none;">
+                                <div>
+                                    <dl>
+                                        <dt class="active">
+                    <ul class="gup">
+                      <li class="wmt_n">英国富时100指数</li>
+                      <li><span class="">7013.55</span></li>
+                      <li><span class="rdown">+35.81</span></li>
+                      <li><span class="rdown">+0.51%</span></li>
+                    </ul>
+                  </dt>
+                                        <dd style="height:165px;"><img src="./skin/images/ft100.gif"></dd>
+                                        <dd class="link" style="display:block">
+                                            <p> <a href="#" target="_blank">欧洲股市</a> <a href="#" target="_blank">经济数据</a> <a href="#" target="_blank">财经日历</a> <a href="#" target="_blank">环球滚动</a> </p>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">德国DAX指数</li>
+                      <li><span class="">10580.38</span></li>
+                      <li><span class="rdown">+166.31</span></li>
+                      <li><span class="rdown">+1.60%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">斯托克50</li>
+                      <li><span class="">3025.19</span></li>
+                      <li><span class="rdown">+50.15</span></li>
+                      <li><span class="rdown">+1.69%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">法CAC40指数</li>
+                      <li><span class="">4470.92</span></li>
+                      <li><span class="rdown">+65.75</span></li>
+                      <li><span class="rdown">+1.49%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n">富时意大利MIB指数</li>
+                      <li><span class="">16591.37</span></li>
+                      <li><span class="rdown">+322.11</span></li>
+                      <li><span class="rdown">+1.98%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="m-p1-lb2_1-container" style="position: absolute; width: 359px; left: 0px; top: 0px; display: none;">
+                                <div>
+                                    <dl>
+                                        <dt class="active">
+                    <ul class="gup">
+                      <li class="wmt_n"><a href="#" target="_blank">道琼斯</a></li>
+                      <li><span class="">18138.38</span></li>
+                      <li><span class="rdown">+39.44</span></li>
+                      <li><span class="rdown">+0.22%</span></li>
+                    </ul>
+                  </dt>
+                                        <dd style="height:165px;">
+                                            <a target="_blank" href="#"><img src="./skin/images/dji.gif"></a>
+                                        </dd>
+                                        <dd class="link" style="display:block">
+                                            <p> <a href="#" target="_blank">成份股</a> <a href="#" target="_blank">中国概念股</a> <a href="#" target="_blank">板块异动</a> <a href="#" target="_blank">热门美股</a> <a href="#" target="_blank">经济数据</a> </p>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n"><a href="#" target="_blank">纳斯达克</a></li>
+                      <li><span class="">5214.16</span></li>
+                      <li><span class="rdown">+0.83</span></li>
+                      <li><span class="rdown">+0.02%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n"><a href="#" target="_blank">标普500</a></li>
+                      <li><span class="">2132.98</span></li>
+                      <li><span class="rdown">+0.44</span></li>
+                      <li><span class="rdown">+0.02%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="">
+                      <li class="wmt_n"><a href="#" target="_blank">道指期货</a></li>
+                      <li><span class="">17312.00</span></li>
+                      <li><span class="@PBG@">0.00</span></li>
+                      <li><span class="@PBG@">0.00%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="">
+                      <li class="wmt_n"><a href="#" target="_blank">纳指期货</a></li>
+                      <li><span class="">4244.00</span></li>
+                      <li><span class="@PBG@">0.00</span></li>
+                      <li><span class="@PBG@">0.00%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="m-p1-lb2_1-container" style="position: absolute; width: 359px; left: 0px; top: 0px; display: none;">
+                                <div>
+                                    <dl>
+                                        <dt class="active">
+                    <ul class="rdown">
+                      <li class="wmt_n"><a href="#" target="_blank">黄金</a></li>
+                      <li><span class="">1251.70</span></li>
+                      <li><span class="gdown">-5.90</span></li>
+                      <li><span class="gdown">-0.47%</span></li>
+                    </ul>
+                  </dt>
+                                        <dd style="height:165px;">
+                                            <a target="_blank" href="#"><img src="./skin/images/gc.gif"></a>
+                                        </dd>
+                                        <dd class="link" style="display:block">
+                                            <p> <a href="#" target="_blank">SPDR黄金持仓</a> <a href="#" target="_blank">相关内盘</a> <a href="#" target="_blank">实物金价</a> <a href="#" target="_blank">黄金资讯</a> </p>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="rdown">
+                      <li class="wmt_n"><a href="#" target="_blank">原油</a></li>
+                      <li><span class="">50.32</span></li>
+                      <li><span class="gdown">-0.12</span></li>
+                      <li><span class="gdown">-0.24%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                    <ul class="gup">
+                      <li class="wmt_n"><a href="#" target="_blank">CBOT黄豆</a></li>
+                      <li><span class="">962.75</span></li>
+                      <li><span class="rdown">+6.50</span></li>
+                      <li><span class="rdown">+0.68%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="rdown">
+                      <li class="wmt_n"><a href="#" target="_blank">LME铜</a></li>
+                      <li><span class="">4675.50</span></li>
+                      <li><span class="gdown">-36.50</span></li>
+                      <li><span class="gdown">-0.77%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="rdown">
+                      <li class="wmt_n"><a href="#" target="_blank">白银</a></li>
+                      <li><span class="">17.42</span></li>
+                      <li><span class="gdown">-0.09</span></li>
+                      <li><span class="gdown">-0.51%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="m-p1-lb2_1-container" style="position: absolute; width: 359px; left: 0px; top: 0px; display: none;">
+                                <div>
+                                    <dl>
+                                        <dt class="active">
+                    <ul class="gdown">
+                      <li class="wmt_n"><a href="#" target="_blank">美元人民币</a></li>
+                      <li><span class="">6.7247</span></li>
+                      <li><span class="gdown">-0.0022</span></li>
+                      <li><span class="gdown">-0.0327%</span></li>
+                    </ul>
+                  </dt>
+                                        <dd style="height:165px;">
+                                            <a target="_blank" href="#"><img src="./skin/images/usdcny.gif"></a>
+                                        </dd>
+                                        <dd class="link" style="display:block">
+                                            <p> <a href="#" target="_blank">机构看市</a> <a href="#" target="_blank">经济数据</a> <a href="#" target="_blank">专家坐堂</a> <a href="#" target="_blank">滚动新闻</a> <a href="#" target="_blank">美元指数</a> </p>
+                                        </dd>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="gdown">
+                      <li class="wmt_n"><a href="#" target="_blank">欧元美元</a></li>
+                      <li><span class="">1.0966</span></li>
+                      <li><span class="gdown">-0.0088</span></li>
+                      <li><span class="gdown">-0.7961%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="rup">
+                      <li class="wmt_n"><a href="#" target="_blank">美元日元</a></li>
+                      <li><span class="">104.1200</span></li>
+                      <li><span class="rdown">+0.4600</span></li>
+                      <li><span class="rdown">+0.4438%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="gdown">
+                      <li class="wmt_n"><a href="#" target="_blank">英镑美元</a></li>
+                      <li><span class="">1.2186</span></li>
+                      <li><span class="gdown">-0.0062</span></li>
+                      <li><span class="gdown">-0.5062%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                    <dl class=" noscroll">
+                                        <dt>
+                    <ul class="rup">
+                      <li class="wmt_n"><a href="#" target="_blank">美元瑞郎</a></li>
+                      <li><span class="">0.9894</span></li>
+                      <li><span class="rdown">+0.0031</span></li>
+                      <li><span class="rdown">+0.3143%</span></li>
+                    </ul>
+                  </dt>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        jQuery(".slideTxtBox").slide({
+                            titCell: ".hd .w48",
+                            mainCell: ".bd ",
+                            effect: "fold"
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="center-img-cover">
+                <a href="https://hk.86177.top/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/center.png" alt="">
+                </a>
+                <a href="https://hk.86177.top/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/center.png" alt="">
+                </a>
+                <a href="https://hk.86177.top/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/center.png" alt="">
+                </a>
+            </div>
+            <div class="con mt25">
+                <!--  -->
+                <!--  -->
+
+                <div class="box w360 mr85">
+                    <div class="tita "><span>股市</span></div>
+                    <div class="newslist">
+                        <ul>
+                            <li><a href="./a/hongguan/360.html" title="2017版商品名称及编码协调制度实行"><i></i>2017版商品名称及编码协调制度实行</a></li>
+                            <li><a href="./a/hongguan/359.html" title="电动车时代的新石油 谁将成为供应锂的“"><i></i>电动车时代的新石油 谁将成为供应锂的“</a></li>
+                            <li><a href="./a/hongguan/358.html" title="2016年交易员年终心得：最危险的地方可能"><i></i>2016年交易员年终心得：最危险的地方可能</a></li>
+                            <li><a href="./a/hongguan/357.html" title="二十条措施扩大开放吸引外资（在国务院"><i></i>二十条措施扩大开放吸引外资（在国务院</a></li>
+                            <li><a href="./a/hongguan/356.html" title="ETF市场红火 基金却迎来关闭潮"><i></i>ETF市场红火 基金却迎来关闭潮</a></li>
+                            <li><a href="./a/hongguan/355.html" title="一带一路 亚洲机遇：中国企业探索出海财"><i></i>一带一路 亚洲机遇：中国企业探索出海财</a></li>
+                            <li><a href="./a/hongguan/354.html" title="12月31日财经频道-财经视野晚报"><i></i>12月31日财经频道-财经视野晚报</a></li>
+                            <li><a href="./a/hongguan/353.html" title="高手日志:2016年平稳收官五连板庄股艳压"><i></i>高手日志:2016年平稳收官五连板庄股艳压</a></li>
+                            <li><a href="./a/hongguan/352.html" title="独家"><i></i>独家</a></li>
+                            <li><a href="./a/hongguan/351.html" title="周小川新年致辞：2017年保持货币政策稳健"><i></i>周小川新年致辞：2017年保持货币政策稳健</a></li>
+                            <li><a href="./a/hongguan/350.html" title="法兴姚炜：中国将在两年内放弃6.5%的经济"><i></i>法兴姚炜：中国将在两年内放弃6.5%的经济</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="box w360">
+                    <div class="tita "><span>新三板</span></div>
+                    <div class="rbox lighting">
+                        <div class="bd">
+                            <ul class="plist yh" id="yh">
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行">苏宁荣获2016中国政府采购奖O2O模式备受行</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/tiyu/510.html" title="苏宁荣获2016中国政府采购奖O2O模式备受行"> <img src="./uploads/191104/1-1911041131091O.png" alt="苏宁荣获2016中国政府采购奖O2O模式备受行"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/guona/66.html" title="苏州限购后首场土拍仍火爆 40多家房企参">苏州限购后首场土拍仍火爆 40多家房企参</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/guona/66.html" title="苏州限购后首场土拍仍火爆 40多家房企参"> <img src="./uploads/191104/1-1911041122523B.jpg" alt="苏州限购后首场土拍仍火爆 40多家房企参"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/guona/89.html" title="2016中国吊装十强、百强企业榜单发布">2016中国吊装十强、百强企业榜单发布</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/guona/89.html" title="2016中国吊装十强、百强企业榜单发布"> <img src="./uploads/191104/1-191104112236140.jpg" alt="2016中国吊装十强、百强企业榜单发布"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/guona/69.html" title="一线城市房价确已降温 专家：控房价力度">一线城市房价确已降温 专家：控房价力度</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/guona/69.html" title="一线城市房价确已降温 专家：控房价力度"> <img src="./uploads/191104/1-191104112212Q4.jpg" alt="一线城市房价确已降温 专家：控房价力度"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/guona/78.html" title="金砖国家新开发银行首个贷款签约项目落">金砖国家新开发银行首个贷款签约项目落</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/guona/78.html" title="金砖国家新开发银行首个贷款签约项目落"> <img src="./uploads/191104/1-191104112155534.png" alt="金砖国家新开发银行首个贷款签约项目落"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/guona/85.html" title="汇丰调查：2030年中国服务出口规模预计将">汇丰调查：2030年中国服务出口规模预计将</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/guona/85.html" title="汇丰调查：2030年中国服务出口规模预计将"> <img src="./uploads/191104/1-19110411213KA.jpg" alt="汇丰调查：2030年中国服务出口规模预计将"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/touzilicai/708.html" title="海航斥资6亿入股香港上市珠宝商">海航斥资6亿入股香港上市珠宝商</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/touzilicai/708.html" title="海航斥资6亿入股香港上市珠宝商"> <img src="./images/defaultpic.gif" alt="海航斥资6亿入股香港上市珠宝商"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/touzilicai/707.html" title="中国联通启用低频组建4G网 推2G和3G用户转">中国联通启用低频组建4G网 推2G和3G用户转</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/touzilicai/707.html" title="中国联通启用低频组建4G网 推2G和3G用户转"> <img src="./images/defaultpic.gif" alt="中国联通启用低频组建4G网 推2G和3G用户转"> </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="bg0"> <a href="./a/touzilicai/706.html" title="3D打印汽车将实现大规模量产？">3D打印汽车将实现大规模量产？</a> </h3>
+                                    <div class="picbox">
+                                        <a href="./a/touzilicai/706.html" title="3D打印汽车将实现大规模量产？"> <img src="./images/defaultpic.gif" alt="3D打印汽车将实现大规模量产？"> </a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box w350">
+                    <div class="rg_yjhk_tabs mb30">
+                        <div class="yjhk_bd">
+                            <ul class="yjhk_nav clearfix">
+                                <li class="current"><a>科创板</a></li>
+                            </ul>
+                            <div class="yjhk_main">
+                                <div class="rg_yjzg current">
+                                    <div class="yjzg_first rg_video_first">
+                                        <a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的" class="pic"> <img src="./uploads/191104/1-1911041126122P.png" alt="【见闻对话】路易达孚陈涛：商品大涨的" width="350" height="90">
+                                            <div class="info"> <i></i> <span class="time"></span> </div>
+                                        </a>
+                                        <h3><a href="./a/chanye/249.html" title="【见闻对话】路易达孚陈涛：商品大涨的"><em class="cms-I_Blank_">【见闻对话】路易达孚陈涛：商品大涨的</em></a></h3>
+                                    </div>
+                                    <ul class="yjzg_list rg_video_list">
+                                        <li><a href="./a/chanye/251.html" title="11月乘用车销量再增近20% 销量连续9个月攀"><i></i>11月乘用车销量再增近20% 销量连续9个月攀</a></li>
+                                        <li><a href="./a/chanye/256.html" title="智能贝塔ETF成投资新宠 资金加速流入"><i></i>智能贝塔ETF成投资新宠 资金加速流入</a></li>
+                                        <li><a href="./a/chanye/259.html" title="刘士余：证监会放权 交易所加强一线监管"><i></i>刘士余：证监会放权 交易所加强一线监管</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="avd mt25"></div>
+
+            <div class="avd mt25"></div>
+
+            <a href="https://hk.86177.top/" class="bottom-img-ad">
+                <img src="https://ttc-huihot.oss-cn-hangzhou.aliyuncs.com/images/bottom2.png" alt="">
+            </a>
+            <div class="g_box3">
+                <div class="t_1">
+                    <h3 class="c5">图文资讯<i>Picture</i></h3>
+                    <span>  <a href='./a/chanye/'>科创板</a> <a href='./a/hongguan/'>股市</a> <a href='./a/touzilicai/'>新三板</a> </span> </div>
+                <div class="pic1 fl">
+                    <a href="./a/tiyu/510.html"><img src="./uploads/191104/1-1911041131091O.png" alt="苏宁荣获2016中国政府采购奖O2O模式备受行" />
+                        <p>苏宁荣获2016中国政府采购奖O2O模式备受行</p>
+                    </a>
+                </div>
+                <ul class="pic2 fl">
+                    <li>
+                        <a href="./a/chanye/249.html"><img src="./uploads/191104/1-1911041126122P.png" alt="【见闻对话】路易达孚陈涛：商品大涨的" />
+                            <p>【见闻对话】路易达孚陈涛：商品大涨的</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/chanye/251.html"><img src="./uploads/191104/1-19110411254Y24.png" alt="11月乘用车销量再增近20% 销量连续9个月攀" />
+                            <p>11月乘用车销量再增近20% 销量连续9个月攀</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/chanye/256.html"><img src="./uploads/191104/1-191104112532296.png" alt="智能贝塔ETF成投资新宠 资金加速流入" />
+                            <p>智能贝塔ETF成投资新宠 资金加速流入</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/chanye/259.html"><img src="./uploads/191104/1-191104112440a9.png" alt="刘士余：证监会放权 交易所加强一线监管" />
+                            <p>刘士余：证监会放权 交易所加强一线监管</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/guona/66.html"><img src="./uploads/191104/1-1911041122523B.jpg" alt="苏州限购后首场土拍仍火爆 40多家房企参" />
+                            <p>苏州限购后首场土拍仍火爆 40多家房企参</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/guona/89.html"><img src="./uploads/191104/1-191104112236140.jpg" alt="2016中国吊装十强、百强企业榜单发布" />
+                            <p>2016中国吊装十强、百强企业榜单发布</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/guona/69.html"><img src="./uploads/191104/1-191104112212Q4.jpg" alt="一线城市房价确已降温 专家：控房价力度" />
+                            <p>一线城市房价确已降温 专家：控房价力度</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./a/guona/78.html"><img src="./uploads/191104/1-191104112155534.png" alt="金砖国家新开发银行首个贷款签约项目落" />
+                            <p>金砖国家新开发银行首个贷款签约项目落</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="link">
+        <div class="box">公司简介：会火财经是一家互联网信息技术和财经媒体公司，坚持以科技创新为导向，是专注于黄金投资领域的黄金投资资讯平台，致力于打造国内领先的投资资讯、数据、策略、金融产品的价值服务平台。经过十年专业运营，已形成独具特色的信息产品及服务模式。在中国黄金投资资讯传播模式、咨询平台与投资者的互动模式方面开创了先河，奠定了里程碑式的行业基础。<br/>联系我们：tg0077@yeah.net </div>
+    </div>
+    <div class="clear"></div>
+    <div class="foot">
+        <div class="f_box1">
+
+            <p class="pic"> <img src="./skin/images/bot_1.jpg" /> <img src="./skin/images/bot_2.jpg" /> <img src="./skin/images/bot_3.jpg" /> <img src="./skin/images/bot_4.jpg" /> <img src="./skin/images/bot_5.jpg" /> </p>
+        </div>
+
+    </div>
+
+    <script>
+        $('.a-box .close-ad-btn').click(function() {
+            $('.a-box').hide()
+        });
+        $('.cover-ad-box .cover-close-btn').click(function() {
+            $('.cover-ad-box').hide()
+        })
+    </script>
+
+</body>
+
+</html>
